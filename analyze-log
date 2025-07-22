@@ -2,6 +2,12 @@
 
 grep -oE '^(([1-9]?[0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))\.){3}([1-9]?[0-9]|1[0-9][0-9]|2([0-4][0-9]|5[0-5]))' nginx-access.log | uniq -c | sort -hr | head -n 5 >> listIps.txt
 
+echo -e '\n''IPS and Count Requests'
+
+echo '-------------------------------------------------'
+
+#while to get line ips and format with the requests, in a more readable way
+
 while read line; do
 
 requests=$(echo $line | awk '{print $1}')
@@ -10,5 +16,11 @@ ip=$(echo $line | awk '{print $2}')
 	echo 'The: '${ip}' - has '${requests}' requests'
 
 done < listIps.txt
+
+#just a line to clean the view
+
+echo '-------------------------------------------------'
+
+
 
 rm listIps.txt
