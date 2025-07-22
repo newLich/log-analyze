@@ -1,2 +1,2 @@
 # log-analyze
-Just a project to show some log search and sort.
+A project to analyze NGINX .log, filtering ips and count requests.
